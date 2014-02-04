@@ -16,6 +16,8 @@ module.exports = function(config) {
     files: [
       'public/js/vendor/angular.js',
       'public/js/vendor/angular-mocks.js',
+      'public/js/vendor/angular-route.js',
+      'public/js/vendor/angular-resource.js',
       'src/js/**/*.js',
       'src/js/*.js',
       'spec/*.js'
@@ -58,7 +60,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // If browser does not capture in given timeout [ms], kill it
