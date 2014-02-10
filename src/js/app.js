@@ -1,33 +1,35 @@
-angular.module('seedApp', [ 'WelcomeCtrls',
-                            'HelloCtrls',
-                            'HelloDirective',
+angular.module('seedApp', [ 'SectionCtrl',
                             'ngRoute',
-                            'resistance',
                             'templates',
-                            'HelloFilter' ])
+                            'ngSocket' ])
 
-  .config(function($routeProvider, $locationProvider) {
-    $routeProvider.
-     when('/', {
-       controller  : 'welcomeCtrl',
-       templateUrl : 'templates/welcome.html',
-       resolve     : {
-        foo : 'bar'
-       },
-       reloadOnSearch: false
-     }).
-     when('/hello', {
-      controller  : 'helloCtrl',
-      templateUrl : 'templates/hello.html'
-     }).
-     when('/resistance', {
-      // controller  : 'ResistanceCtrl',
-      templateUrl : 'templates/resistance.html'
-     }).
-     otherwise({ redirectTo: '/' });
-     $locationProvider
-     .html5Mode(true);
+  .constant('routeSettings', {
+    controller  : 'sectionCtrl',
+    templateUrl : 'templates/section.html',
+    resolve     : {
+      fetchContent : fetcher
+    }
   })
-  .factory('bar',function($route){
-    return function() { return $route.current.params; };
+  .config(function($routeProvider, $locationProvider, routeSettings) {
+    $routeProvider.
+      // when('/',      routeSettings).
+      when('/about', routeSettings).
+      when('/work',  routeSettings).
+      when('/links', routeSettings).
+      otherwise({ redirectTo: '/about' });
+
+    $locationProvider
+      .html5Mode(true);
   });
+
+function fetcher ($location, $q, $socket) {
+  var deferred = $q.defer();
+  if($location.path().split('/')[1] === '') {
+    deferred.resolve({ primary : '', title : ''});
+  } else {
+    $socket.emit('routeChange', {route : $location.path().split('/')[1] }, function(content){
+      deferred.resolve(content);
+    });
+  }
+  return deferred.promise;
+}

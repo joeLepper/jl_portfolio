@@ -29,7 +29,8 @@
     "request": "~2.33.0",
     "needle": "~0.6.3",
     "pg": "~2.11.1",
-    "validator": "~3.2.1"
+    "validator": "~3.2.1",
+    "js-yaml": "~3.0.1"
   },
   "devDependencies": {
     "gulp": "~3.2.2",

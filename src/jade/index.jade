@@ -2,20 +2,38 @@ doctype html
 html(lang="en")
   head
     link(rel="stylesheet" type="text/css" href='css/main.css')
-    title='A Seed'
+    title='Joe lepper'
   body(ng-app='seedApp')
-    h1 From Whence Grows an App, dude.
-    #container.col(ng-view)
+    .navbar
+        .main_container
+          .nav_container.clearfix
+            h1 joe lepper
+            h3 making stuff on the internet
+            .nav_container
+              ul(class="nav")
+                //- li
+                //-   a(ng-href="/") home
+                li
+                  a(ng-href="/about") about
+                li
+                  a(ng-href="/work") work
+                li
+                  a(ng-href="/links") links
+          .view(ng-view)
+    .video_holder
+        video(src="img/background.MOV" autoplay loop muted)
+
     script(type='text/javascript' src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js')
     script(type='text/javascript' src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js')
     script(type='text/javascript' src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js')
-    script.
-        if(!window.angular) document.write('<script src="js/vendor/angular.js">');
-    script.
-        if(!window.angular) document.write('<script src="js/vendor/angular-route.js">');
-    script.
-        if(!window.angular) document.write('<script src="js/vendor/angular-resource.js">');
-    script(type='text/javascript' src='/socket.io/socket.io.js')
+    // script.
+    //     if(!window.angular) document.write('<script src="js/vendor/angular.js">');
+    // script.
+    //     if(!window.angular) document.write('<script src="js/vendor/angular-route.js">');
+    // script.
+    //     if(!window.angular) document.write('<script src="js/vendor/angular-resource.js">');
     script(type='text/javascript' src='js/vendor/ngSocket.js')
+    script(type='text/javascript' src='/socket.io/socket.io.js')
+
     script(type='text/javascript' src='js/app.noted.js')
     script(src='http://localhost:35729/livereload.js')
