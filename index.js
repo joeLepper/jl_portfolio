@@ -7,6 +7,7 @@ var express    = require('express')
   , io         = require('socket.io').listen(server)
   , yaml       = require('js-yaml').safeLoad(fs.readFileSync('./server/content.yml', 'utf8'));
 
+console.log('listening on port ' + port);
 server.listen(port);
 
 app.use(express.static(__dirname + '/public'))
