@@ -1,0 +1,3 @@
+[submodule "stepSync"]
+	path = stepSync
+	url = git@github.com:joeLepper/stepSync.git
