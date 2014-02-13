@@ -30,7 +30,7 @@ var gulp     = require('gulp')
   , jadeLocations   = ['src/js/directives/**/jade/*.jade', 'src/jade/views/*.jade']
   , indexLocation   = ['src/jade/index.jade']
   , viewLocations   = ['src/html/*.html']
-  , serverLocations = ['app.js', 'server/*.js'];
+  , serverLocations = ['index.js', 'server/*.js'];
 
 // -------------------------- //
 // ---- individual tasks ---- //
@@ -111,6 +111,18 @@ gulp.task('cacheTemplates', function(){
       prefix     : 'templates/'
     }))
     .pipe(gulp.dest('src/js/templates'));
+});
+
+gulp.task('stepSync', function(){
+  gulp.src('stepSync/js/*.js')
+    .pipe(gulp.dest('public/js'));
+  gulp.src('stepSync/css/*.css')
+    .pipe(gulp.dest('public/css'));
+  gulp.src('stepSync/audio/*.wav')
+    .pipe(gulp.dest('public/audio'));
+  gulp.src('stepSync/index.html')
+    .pipe(rename('step_sync.html'))
+    .pipe(gulp.dest('public'));
 });
 
 gulp.task('server', function() {

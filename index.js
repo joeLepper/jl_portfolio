@@ -13,9 +13,14 @@ server.listen(port);
 app.use(express.static(__dirname + '/public'))
    .use(express.bodyParser());
 
-app.get('/*', function(req,res){
+app.get('/step_sync', function (req,res) {
+  console.log('Serving stepSync');
+  res.sendfile('public/step_sync.html');
+});
+
+app.get('/*', function (req,res) {
   console.log('Service!');
-	reqHandle.start(req,res);
+  res.sendfile('public/index.html');
 });
 
 io.set('log level', 0);
